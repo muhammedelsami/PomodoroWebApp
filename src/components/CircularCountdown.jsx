@@ -14,7 +14,7 @@ const CircularCountdown = ({ progress, size = 200, strokeWidth = 8 }) => {
       >
         {/* Background circle */}
         <circle
-          className="text-gray-200 dark:text-gray-700"
+          className="text-slate-300/40 dark:text-slate-700/60"
           strokeWidth={strokeWidth}
           stroke="currentColor"
           fill="transparent"
@@ -24,17 +24,23 @@ const CircularCountdown = ({ progress, size = 200, strokeWidth = 8 }) => {
         />
         {/* Progress circle */}
         <circle
-          className="text-primary transition-all duration-300 ease-in-out"
+          className="transition-all duration-300 ease-in-out"
           strokeWidth={strokeWidth}
           strokeDasharray={circumference}
           strokeDashoffset={strokeDashoffset}
           strokeLinecap="round"
-          stroke="currentColor"
+          stroke="url(#timerGradient)"
           fill="transparent"
           r={radius}
           cx={size / 2}
           cy={size / 2}
         />
+        <defs>
+          <linearGradient id="timerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="var(--color-primary)" />
+            <stop offset="100%" stopColor="var(--color-secondary)" />
+          </linearGradient>
+        </defs>
       </svg>
     </div>
   );
